@@ -37,9 +37,9 @@ export default function TaskForm({ onSubmit, editingTask }) {
 
   // Ícones para os diferentes níveis de prioridade
   const priorityIcons = [
-    { name: "frowno", color: "#ff4d4d" }, // Alta prioridade
-    { name: "face-meh", color: "#ffd700" }, // Média prioridade
-    { name: "smile-o", color: "#4caf50" }, // Baixa prioridade
+    { name: "flag", color: "#ff4d4d" }, // Alta prioridade
+    { name: "flag", color: "#ffd700" }, // Média prioridade
+    { name: "flag", color: "#4caf50" }, // Baixa prioridade
   ];
 
   return (
