@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Pressable,
 } from "react-native";
+import Icon from "react-native-vector-icons/MaterialIcons";
 
 export default function TaskForm({ onSubmit, editingTask }) {
   const [name, setName] = useState("");
@@ -34,6 +35,13 @@ export default function TaskForm({ onSubmit, editingTask }) {
     resetForm();
   };
 
+  // Ícones para os diferentes níveis de prioridade
+  const priorityIcons = [
+    { name: "frowno", color: "#ff4d4d" }, // Alta prioridade
+    { name: "face-meh", color: "#ffd700" }, // Média prioridade
+    { name: "smile-o", color: "#4caf50" }, // Baixa prioridade
+  ];
+
   return (
     <View style={styles.form}>
       <TextInput
@@ -58,7 +66,19 @@ export default function TaskForm({ onSubmit, editingTask }) {
             ]}
             onPress={() => setPriority(index + 1)}
           >
-            <Text style={styles.priorityText}>{level}</Text>
+            <Icon
+              name={priorityIcons[index].name}
+              size={30}
+              color={priority === index + 1 ? priorityIcons[index].color : "#d3d3d3"}
+            />
+            <Text
+              style={[
+                styles.priorityText,
+                priority === index + 1 && styles.selectedPriorityText,
+              ]}
+            >
+              {level}
+            </Text>
           </Pressable>
         ))}
       </View>
@@ -84,17 +104,17 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   priorityButton: {
+    alignItems: "center",
     padding: 8,
-    borderWidth: 1,
-    backgroundColor:"#a6a6a6",
-    borderColor: "#a6a6a6",
-    borderRadius: 4,
   },
   selectedPriority: {
     backgroundColor: "#007bff",
     borderColor: "#007bff",
   },
   priorityText: {
+    color: "#000", // Default text color
+  },
+  selectedPriorityText: {
     color: "#fff",
   },
 });
